@@ -56,33 +56,60 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
             // 1 буусан тул тоглогчийн ээлжийг солино
             // Хэрэв идэвхитэй тоглогч нь 0 байвал 1 болго
             // Хэрэв идэвхитэй тоглогч нь 1 байвал 0 болго
-                roundScore = 0;
-                document.getElementById("current-" + actevePlayer).textContent = 0;
-
-            // Улаан цгийг шилжүүлэх
-            document.querySelector(".player-0-panel").classList.toggle("active");
-            document.querySelector(".player-1-panel").classList.toggle("active");
-
-            // Шоог алга болгох
-            diceDom.style.display = "none";
-
-                if (actevePlayer === 0){
-                    actevePlayer = 1;
-                }else {
-                    actevePlayer = 0;
-                }
-
-
-
-
-
-
+         switchToNext();
     };
+});
 
+// Hold Tovhcnii listener
 
+document.querySelector('.btn-hold').addEventListener('click', function(){
+    //Ug toglogchiin eeljnii onoog global onoond nemne
+    // Eeljiin onoog ni 0 no
+    //Toglogchiin eeljiig solino
+//   if (actevePlayer ===0) {
+//scores[0] = scores[0] + roundScore;
+//   }else {
+//scores[1] = scores[1] + roundScore;
+  // }
+
+score[actevePlayer] = score[actevePlayer] + roundScore;
+
+//Ug toglogch hojgson esehiig shalgah onoo 100 gs ih eseh
+
+if(score[actevePlayer] >= 20){
+
+//Yalagch gesen textiig nerniih  i orond gargasna
+
+document.getElementById("name-" + actevePlayer).textContent = "WINNER"
+
+}
+
+document.getElementById('score-' + actevePlayer).textContent = score[actevePlayer];
+
+switchToNext();
 
 });
 
 
+function switchToNext(){
+    roundScore = 0;
+document.getElementById("current-" + actevePlayer).textContent = 0;
 
+if (actevePlayer === 0){
+    actevePlayer = 1;
+}else {
+    actevePlayer = 0;
+}
+// Улаан цгийг шилжүүлэх
+document.querySelector(".player-0-panel").classList.toggle("active");
+document.querySelector(".player-1-panel").classList.toggle("active");
 
+// Шоог алга болгох
+diceDom.style.display = "none";
+}
+
+//Shine togloon ehluuleh
+
+document.querySelector('.btn-new').addEventListener('click',function(){
+    alert('cleked');
+})
